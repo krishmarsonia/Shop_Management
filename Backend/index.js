@@ -1,10 +1,11 @@
 const express = require('express');
+
+const serviceRoutes = require('./Routes/service');
 const port = process.env.PORT || 7000;
 const app = express();
 
-app.get('/', (req,res,next)=> {
-    res.send('Hello world');
-})
-app.listen(7000, () => {
+app.use(serviceRoutes);
+
+app.listen(port, () => {
     console.log("Server rocking!!");
 })
