@@ -1,5 +1,9 @@
 const express = require('express');
 
+const mongoose = require('mongoose');
+
+const serviceModel = require('./model/service.model');
+
 const path = require('path');
 
 const serviceRoutes = require('./Routes/service');
