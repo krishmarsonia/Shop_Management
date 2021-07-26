@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <title><%= PageTitle %></title>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-center">Hair cut's List</h1>
+        <hr>
+        <div class="d-flex justify-content-center">
+            <% if(hair.length > 0){ %>
+            <ul class="list-group w-75">
+                <% for (let type of hair) { %>
+                <li class="list-group-item">
+                    <h2 class="d-ml-inline-block" style="display: inline-block;"><%= type.name %></h2>
+                    <div class="mb-3" style="display: inline;"><img style="height: 150px; width: 150px; float: right;"
+                            src="https://media.gq.com/photos/576450aa5db2e8cb18c9e972/3:4/w_1500,h_2000,c_limit/summer-haircut-1x1.jpg"
+                            alt="haircut"></div>
+                    <div style="display: inline;">
+                        <p><b>Rs. <%= type.rs %></b> </p>
+                        <form action="/krish" ></form>
+                    </div>
+                </li>
+                <% } %>
+            </ul>
+            <% } %>
+        </div>
+    </div>
+</body>
+
+</html>
