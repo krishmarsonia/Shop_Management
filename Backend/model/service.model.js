@@ -8,7 +8,11 @@ const serviceSchemas =  mongoose.Schema({
     serPrice: {
         type: Number,
         required: true
-    }
+    },
+    serApp: {
+        type: Date,
+        required: false
+    },
 })
 
 module.exports = mongoose.model('Services', serviceSchemas);
