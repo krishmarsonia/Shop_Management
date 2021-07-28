@@ -1,2 +1,3 @@
-console.log('JWT');
+
+console.log('Auth');
 
