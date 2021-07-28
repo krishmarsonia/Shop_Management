@@ -12,8 +12,6 @@ router.get('/haircut', ServiceController.haircut);
 
 router.post('/addApp', ServiceController.addApp);
 
-router.post('/testdate', ServiceController.testdate);
-
-router.get('/dandt', ServiceController.dandt);
+router.get('/dandt/:servId', ServiceController.dandt);
 
 module.exports = router;

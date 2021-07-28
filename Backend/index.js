@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, '../Client/views'));
 
-app.use(express.static(__dirname + "/views"));
+// app.use(express.static(__dirname + "/views"));
 
 app.use(serviceRoutes);
 

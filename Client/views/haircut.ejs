@@ -22,13 +22,13 @@
             <ul class="list-group w-75">
                 <% for (let type of hair) { %>
                 <li class="list-group-item">
-                    <h2 class="d-ml-inline-block" style="display: inline-block;"><%= type.name %></h2>
+                    <h2 class="d-ml-inline-block" style="display: inline-block;"><%= type.serType %></h2>
                     <div class="mb-3" style="display: inline;"><img style="height: 150px; width: 150px; float: right;"
                             src="https://media.gq.com/photos/576450aa5db2e8cb18c9e972/3:4/w_1500,h_2000,c_limit/summer-haircut-1x1.jpg"
                             alt="haircut"></div>
                     <div style="display: inline;">
-                        <p><b>Rs. <%= type.rs %></b> </p>
-                        <form action="/krish" ></form>
+                        <p><b>Rs. <%= type.serPrice %></b> </p>
+                        <a href="/dandt/<%= type.id %>"> click here</a>
                     </div>
                 </li>
                 <% } %>

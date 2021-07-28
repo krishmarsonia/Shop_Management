@@ -13,13 +13,14 @@
 </head>
 <body>
     <div class="container">
-        <form action="/testdate" method="POST">
+        <form action="/addApp" method="POST">
             <label for="dateinput">Date: </label>
             <input type="date" name="dateinput" id="dateinput">
             <br>
             <label for="timeinput">Time: </label>
             <input type="time" name="timeinput" id="timeinput">
             <br><br>
+            <input type="hidden" name="servId" value="<%= servId %>">
             <input type="submit" class="btn btn-primary">
         </form>
     </div>
