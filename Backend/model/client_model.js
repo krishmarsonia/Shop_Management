@@ -6,16 +6,15 @@ const clientSchema = mongoose.Schema({
         type: String,
         required: true,
         trim: true,
-        minLength: 3,
+        minLength: 4,
         unique: true,
     },
     email: {
         type: String,
         required: true,
         trim: true,
-        unique: true,
         lowercase: true,
-        minLength: 13,
+        minLength: 9,
         validator(email) {
             if (!validate.isEmail(email)) {
                 throw new Error('Please enter a valid email')
@@ -26,25 +25,21 @@ const clientSchema = mongoose.Schema({
         type: String,
         required: true,
         trim: true,
-        unique: true,
-        minLength: 7,
+        minLength: 5,
         validator(pass) {
-            if (pass.length <= 6) {
-                throw new Error("Password must cointain min 7 character");
+            if (pass.length <= 4) {
+                throw new Error("Password must cointain min 5 character");
             }
             if (pass.toLowercase().includes('password')) {
                 throw new Error("Please set a strong password");
             }
         }
     },
-    // appointments: [{
-    //     appointment: {
+    // tokens: [{
+    //     token: {
     //         type: String,
-    //     },
-    //     dateTime: {
-    //         type: Date
     //     }
-    // }],
+    // }]
 })
 
 clientSchema.virtual('appointments', {
