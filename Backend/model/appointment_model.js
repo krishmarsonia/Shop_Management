@@ -14,7 +14,11 @@ const appointmentSchema = ({
         type: mongoose.Schema.Types.ObjectId,
         // requred: true,
         ref: 'Service',
-    }
+    },
+    time: {
+        type: Date,
+    },
+    
 })
 
 const Appointment = mongoose.model('Appointment', appointmentSchema)

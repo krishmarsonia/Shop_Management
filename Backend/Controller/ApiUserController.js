@@ -1,26 +1,61 @@
-const Client = require('../model/client_model')
 const chalk = require('chalk');
+const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
+
+const Client = require('../model/client_model')
 
 const Error = chalk.bold.red;
 const Sucess = chalk.inverse.green;
 
-exports.signUp = async (request, res, next) => {
+exports.signUp = async (req, res, next) => {
+    
+        console.log(req.body.email);
+        Client.findOne({ email: req.body.email }).then(user => {
+            console.log(user);
 
-    const req = request.body 
-    console.log(chalk.inverse(req.email));
-    const client = new Client({
-        name: req.name,
-        email: req.email,
-        password: req.password,
-    })
+            if (user) {
+                return res.status(400).send({error: 'User has already created account'})   
+            }
+            bcrypt.hash(req.body.password, 12).then((hashedpassword) => {
+                
+                const client = new Client({
+                    name: req.body.name,
+                    email: req.body.email,
+                    password: hashedpassword,
+                })
+
+                client.save().then(
+                    res.status(200).send(client)
+                )
+            })
+            
+        }).catch((error) => { console.log(error) })
+
+}
+
+exports.Login = async (req, res, next) => {
     
     try {
-
-        await client.save()
-        res.status(200).send(client)
         
+        const client = await Client.findOne({ email: req.body.email })
+        console.log(client);
+        if (!client) {
+            return res.status(400).send({error: 'Please Signup first'})
+        }
+
+        const token = jwt.sign({ _id: client._id.toString() }, process.env.JWT_SECRET,{
+            expiresIn: '7 days',
+        })
+
+        // clients.tokens = client.tokens.concat({ token: token })
+        console.log(chalk.inverse(token));
+        res.status(200).send({
+            client,
+            token
+        })
+
     } catch (error) {
-        console.log(Error(error));
-        res.status(500).send({'error': error})
+        console.log(chalk.red(error));
+        res.status(500).send({ error: error})
     }
 }
