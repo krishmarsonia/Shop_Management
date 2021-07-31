@@ -15,18 +15,17 @@ const clientSchema = mongoose.Schema({
         trim: true,
         unique: true,
         lowercase: true,
-        minLength: 13,
-        validator(email) {
-            if (!validate.isEmail(email)) {
-                throw new Error('Please enter a valid email')
-            }
-        }
+        minLength: 8,
+        // validator(email) {
+        //     if (!validate.isEmail(email)) {
+        //         throw new Error('Please enter a valid email')
+        //     }
+        // }
     },
     password: {
         type: String,
         required: true,
         trim: true,
-        unique: true,
         minLength: 7,
         validator(pass) {
             if (pass.length <= 6) {

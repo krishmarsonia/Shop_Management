@@ -2,6 +2,8 @@ const express = require('express');
 require('./Database/mongoose')
 const mongoose = require('mongoose');
 
+const bodyParser = require('body-parser');
+
 // ? Routes for API
 const serviceRouteAPI = require('./Routes/ApiService')
 const clientRouteAPI = require('./Routes/ApiClient')
@@ -13,6 +15,7 @@ const clientModel = require('./model/client_model');
 const path = require('path');
 
 const serviceRoutes = require('./Routes/service');
+const authRoutes = require('./Routes/auth');
 const port = process.env.PORT || 7000;
 const app = express();
 
@@ -26,6 +29,7 @@ app.use(express.json())
 // app.use(express.static(__dirname + "/views"));
 
 app.use(serviceRoutes);
+app.use(authRoutes);
 // app.use(serviceRouteAPI)
 app.use(clientRouteAPI)
 
