@@ -9,9 +9,10 @@ const success = chalk.inverse.greenBright
 exports.createService = async (req, res, next) => {
 
     const newService = Service({
-        'serviceType': req.body.serviceType,
-        'serviceName': req.body.serviceName,
-        'servicePrice': req.body.servicePrice,
+        serviceType: req.body.serviceType,
+        serviceName: req.body.serviceName,
+        servicePrice: req.body.servicePrice,
+        serviceImageUrl: req.body.serviceImageUrl
     })
 
     try {
