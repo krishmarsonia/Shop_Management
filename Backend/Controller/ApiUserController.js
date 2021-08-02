@@ -9,7 +9,10 @@ const Sucess = chalk.inverse.green;
 
 exports.signUp = async (req, res, next) => {
     
-        console.log(req.body.email);
+    console.log(req.body.email);
+    console.log(req.body.password);
+    console.log(req.body.name);
+    console.log(req.name);
         Client.findOne({ email: req.body.email }).then(user => {
             console.log(user);
 
@@ -43,7 +46,7 @@ exports.Login = async (req, res, next) => {
             return res.status(400).send({error: 'Please Signup first'})
         }
 
-        const token = jwt.sign({ _id: client._id.toString() }, process.env.JWT_SECRET,{
+        const token = jwt.sign({ _id: client._id.toString() }, 'unavailnodejsSecretKey',{
             expiresIn: '7 days',
         })
 
