@@ -39,7 +39,7 @@ exports.postsignup = (req, res, next) => {
     // });
 
     // user.save().then(createduser => console.log("User Created")).catch(err => console.log(err));
-    res.redirect('/');
+    res.redirect('/signin');
 }
 
 exports.getsignin = (req, res, next) => {
@@ -51,12 +51,24 @@ exports.postsignin = ( req, res, next) => {
     const password = req.body.password;
     User.findOne({email: email}).then(user => {
         bcrypt.compare(password, user.password).then(matcheduser => {
-            //user session and cookie
             if(matcheduser){
+                req.session.LoggedIn = true;
+                req.session.userid = user.id;
                return res.redirect('/haircut');
             } 
             return res.redirect('/');
             
         })
     }).catch(err => console.log(err));
+}
+
+exports.postlogout = (req, res, next) => {
+    req.session.destroy(err => {
+        if(err){
+            console.log(err);
+        }
+
+        console.log("Successfully Logged Out");
+        res.redirect('/signin');
+    })
 }

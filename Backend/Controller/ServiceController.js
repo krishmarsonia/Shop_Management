@@ -1,10 +1,11 @@
-const Service = require("../model/service.model");
+const Service = require("../model/service_model");
 
 exports.home = (req, res, next) => {
   res.render("index", { PageTitle: "Home Page" });
 };
 
 exports.haircut = (req, res, next) => {
+  // console.log(req.session.userid);
   Service.find()
     .then((data) =>
       res.render("haircut", { PageTitle: "Hair Cut", hair: data })
