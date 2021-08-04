@@ -30,11 +30,12 @@ app.set("views", path.join(__dirname, '../Client/views'));
 
 app.use(express.json())
 // ! 
-// app.use(express.static(__dirname + "/views"));
+app.use(express.static(__dirname + "/views"));
 
 app.use(session({secret: 'barber', resave: false, saveUninitialized: false, store: store}))
 
 app.use(serviceRoutes);
+app.use(authRoutes);
 app.use(serviceRouteAPI)
 app.use(clientRouteAPI)
 app.use(barberRouteAPI)
@@ -46,3 +47,5 @@ app.use((req, res, next) => {
 app.listen(port, () => {
     console.log(`Server rocking at: ${port}`)
 })
+
+//page for showing appointments

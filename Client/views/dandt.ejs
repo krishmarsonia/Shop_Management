@@ -16,12 +16,31 @@
         <form action="/addApp" method="POST">
             <label for="dateinput">Date: </label>
             <input type="date" name="dateinput" id="dateinput">
-            <br>
-            <label for="timeinput">Time: </label>
-            <input type="time" name="timeinput" id="timeinput">
+            <br><br>
+            <!-- <label for="timeinput">Time: </label>
+            <input type="time" name="timeinput" id="timeinput"> -->
+            <!-- <br><br> -->
+            <!-- <button class="btn btn-primary">10:00 AM</button> -->
+            <label for="btn">Morning: </label>
+            <input type="submit" name="btn" <%= j %> value="10:00 AM" class="btn btn-primary">
+            <input type="submit" name="btn" <%= k %> value="10:30 AM" class="btn btn-primary">
+            <input type="submit" name="btn" <%= a %>  value="11:00 AM" class="btn btn-primary">
+            <input type="submit" name="btn" <%= c %> value="11:30 AM" class="btn btn-primary">
+            <input type="submit" name="btn" <%= d %> value="12:00 AM" class="btn btn-primary">
+            <br><br>
+            <label for="btn">Noon : &nbsp; &nbsp;</label>
+            <input type="submit" name="btn" <%= e %> value="12:30 AM" class="btn btn-primary">
+            <input type="submit" name="btn" <%= f %> value="01:00 AM" class="btn btn-primary">
+            <input type="submit" name="btn" <%= g %> value="01:30 AM" class="btn btn-primary">
+            <input type="submit" name="btn" <%= h %> value="02:00 AM" class="btn btn-primary">
+            <input type="submit" name="btn" <%= i %> value="02:30 AM" class="btn btn-primary">
+
+                
+            
             <br><br>
             <input type="hidden" name="servId" value="<%= servId %>">
-            <input type="submit" class="btn btn-primary">
+            <input type="hidden" name="barbId" value="<%= barbId %>">
+            <!-- <input type="submit" class="btn btn-primary"> -->
         </form>
     </div>
 </body>
