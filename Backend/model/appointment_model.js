@@ -18,10 +18,15 @@ const appointmentSchema = ({
     },
     barberID: {
         type: mongoose.Schema.Types.ObjectId,
+        required: false,
         ref: 'Barber'
     },
-    time: {
+    date: {
         type: Date,
+        required: false,
+    },
+    time:{
+        type: String,
         // required: true,
     },
     isCompleted: {
