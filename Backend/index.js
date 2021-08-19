@@ -3,6 +3,7 @@ require('./Database/mongoose')
 const mongoose = require('mongoose');
 
 const bodyParser = require('body-parser');
+const dotenv = require('dotenv');
 
 const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
@@ -14,12 +15,15 @@ const appointmentAPI = require('./Routes/ApiAppointment')
 
 const path = require('path');
 
+dotenv.config();
+
 const serviceRoutes = require('./Routes/service');
 const authRoutes = require('./Routes/auth');
+
 const port = process.env.PORT || 7000;
 const app = express();
 const store = new MongoDBStore({
-    uri: 'mongodb+srv://Krish_Marsonia:krish2000@cluster0.ecnqg.mongodb.net/myFirstDatabase',
+    uri: process.env.STOREURL, 
     collection: 'sessions'
 })
 
