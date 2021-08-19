@@ -16,4 +16,8 @@ router.get('/dandt/:barbId', ServiceController.dandt);
 
 router.get('/barberselect/:servId', ServiceController.barberselect);
 
+router.get('/appointments', ServiceController.getAppointment);
+
+router.post('/deleteapp', ServiceController.postDeleteAppointment);
+
 module.exports = router;
